@@ -6,7 +6,7 @@
 /*   By: wahasni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 18:14:10 by wahasni           #+#    #+#             */
-/*   Updated: 2019/02/24 23:17:39 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/02/25 12:01:17 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ int	ft_printf(const char *format, ...)
 		else
 		{
 			while (*pf.format != '%' && *pf.format)
-				pf.buff[pf.buffer_index++] = *pf.format++;
+				pf.buff[pf.index++] = *pf.format++;
 		}
 	}
 	va_end(pf.ap);
-	pf.buff[pf.buffer_index] = '\0';
-	write(1, pf.buff, pf.buffer_index);
-	return (pf.buffer_index);
+	pf.buff[pf.index] = '\0';
+	write(1, pf.buff, pf.index);
+	return (pf.index);
 }

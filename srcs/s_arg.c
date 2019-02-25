@@ -6,7 +6,7 @@
 /*   By: wahasni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/24 13:51:28 by wahasni           #+#    #+#             */
-/*   Updated: 2019/02/24 18:44:46 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/02/25 12:02:03 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int		s_arg(t_printf *pf)
 		w_str(pf);
 	else
 		while (*str)
-			pf->buff[pf->buffer_index++] = *str++;
+			pf->buff[pf->index++] = *str++;
 	return (1);
 }
