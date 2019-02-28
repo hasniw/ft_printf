@@ -6,7 +6,7 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 15:44:47 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/28 12:16:04 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/02/28 13:09:27 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ long long	ft_cast(t_printf *pf)
 		return (va_arg(pf->ap, int));
 	else if ((pf->flags & S_CHAR) == S_CHAR)
 		return ((char)va_arg(pf->ap, int));
-	else if (pf->conv == 'p')
-		return ((void *)va_arg(lst, void *));
 	return (va_arg(pf->ap, int));
 }
 

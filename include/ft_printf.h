@@ -6,7 +6,7 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 11:50:32 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/28 12:02:41 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/02/28 13:47:36 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ intmax_t		ft_atoi(char *s);
 int				ft_isdigit(int c);
 int				find_char(char *str, char c);
 int				find_conv(char *str, char c);
+size_t			ft_voidlen(void *ptr);
 
 /* ---------------------------------- OPTIONS ------------------------------- */
 

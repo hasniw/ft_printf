@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p_arg.c                                            :+:      :+:    :+:   */
+/*   ft_voidlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wahasni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/23 15:44:58 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/28 13:54:35 by wahasni          ###   ########.fr       */
+/*   Created: 2019/02/28 13:44:14 by wahasni           #+#    #+#             */
+/*   Updated: 2019/02/28 13:54:39 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int		p_arg(t_printf *pf)
+size_t	ft_voidlen(void *ptr)
 {
-	char	*str;
-	void	*ptr;
+	int i;
 
-	len = voidlen(ptr);
-	str = "0x";
-	ptr = (void *)va_arg(pf, void *);
-	if (ptr == 0 && pf->precision == -1)
-		// Mettre str dans buff
-	else
-		handle_buff(pf, ft_lltoa_base(nb, pf), 0, len);
-	return (1);
+	i = 0;
+	while (ptr[i])
+		i++;
+	return (i);
 }

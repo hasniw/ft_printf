@@ -96,5 +96,9 @@ int main (void)
 	printf("%%10d       :%10d\n", nb);
 	//printf("%%lc     :%ld\n", L'a'); //wint_t
 	printf("Il faut donc gerer '+, 0, space, minus, min_length, precision'\n");
+	printf("\n\n\n\n\n%p\n", (void *)420);
+	printf("%x\n", 420);
+	printf("%.p\n", (void *)0);
+	printf("%.d\n", 0);
 	return (0);
 }
