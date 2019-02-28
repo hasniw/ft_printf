@@ -3,73 +3,113 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wahasni <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/01/19 00:08:07 by wahasni           #+#    #+#              #
-#    Updated: 2019/02/16 22:09:14 by wahasni          ###   ########.fr        #
+#    Created: 2018/11/13 19:43:10 by yabecret          #+#    #+#              #
+#    Updated: 2019/02/28 11:25:33 by yabecret         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all clean fclean re norme
+# Executable
+NAME 	= 	libftprintf.a
 
-CC = gcc
+# Compilation
+CC		= 	@cc
+CFLAGS	= 	-Wall -Wextra -Werror
 
-FLAGS = -Wall -Wextra -Werror
+SRCDIR = srcs/
 
-CPP_FLAGS = -Iinclude
+UTILSDIR = utils/
 
-NAME = libftprintf.a
+CONVDIR = conv/
 
-SRC_PATH = ./src
-LIB_PATH = ./lib
-INC_PATH = ./inc
-OBJ_PATH = ./obj
-OBJLIB_PATH = ./obj
+INCDIR = includes/
 
-SRC_NAME =	.c\
+# Files && Objs
 
-LIB_NAME = 	.c\
+UTILS	=		$(UTILSDIR)ft_atoi.c			\
+				$(UTILSDIR)ft_bzero.c			\
+				$(UTILSDIR)ft_lltoa_base.c		\
+				$(UTILSDIR)ft_memcpy.c			\
+				$(UTILSDIR)ft_memset.c			\
+				$(UTILSDIR)ft_putstr_fd.c		\
+				$(UTILSDIR)ft_strcpy.c			\
+				$(UTILSDIR)ft_strlen.c			\
+				$(UTILSDIR)options.c			\
 
-INC_NAME = ft_printf.h
+UTIOBJ	= $(UTILS:.c=.o)
 
-OBJ_NAME = $(SRC_NAME:.c=.o)
-	OBJLIB_NAME = $(LIB_NAME:.c=.o)
+CONV	=		$(CONVDIR)c_arg.c				\
+				$(CONVDIR)d_conv.c				\
+				$(CONVDIR)dou_arg.c				\
+				$(CONVDIR)int_arg.c				\
+				$(CONVDIR)p_arg.c				\
+				$(CONVDIR)pct_arg.c				\
+				$(CONVDIR)s_arg.c				\
 
-SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
-LIB = $(addprefix $(LIB_PATH)/, $(LIB_NAME))
-INC = $(addprefix $(INC_PATH)/, $(INC_NAME))
-OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
-OBJLIB = $(addprefix $(OBJLIB_PATH)/,$(OBJLIB_NAME))
+CONVOBJ	= $(CONV:.c=.o)
 
-all: $(NAME)
+SRCS 	=		$(SRCDIR)ft_printf.c			\
+				$(SRCDIR)handle_buff.c			\
+				$(SRCDIR)manage_conv.c			\
+				$(SRCDIR)options_padding.c		\
+				$(SRCDIR)parse_arg.c			\
 
-$(NAME): $(OBJ) $(OBJLIB)
-	@ar rc $(NAME) $(OBJ) $(OBJLIB)
-	@ranlib $(NAME)
-	@echo "__, ___      __, __, _ _, _ ___ __,"
-	@echo "|_   |       |_) |_) | |\ |  |  |_ "
-	@echo "|    |       |   | \ | | \|  |  |  "
-	@echo "~    ~  ~~~~ ~   ~ ~ ~ ~  ~  ~  ~  "
-	@echo "\033[1;34mft_printf\t\033[1;33mCompilation\t\033[0;32m[OK]\033[0m"
+OBJ	   = $(SRCS:.c=.o)
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	@$(CC) -o $@ -c $<
+# **************************************************************************** #
 
-$(OBJLIB_PATH)/%.o: $(LIB_PATH)/%.c
-	@mkdir $(OBJLIB_PATH) 2> /dev/null || true
-	@$(CC) -o $@ -c $<
+# SPECIAL CHARS
 
-clean:
-	@rm -rf $(OBJ) $(OBJLIB)
-	@echo "\033[1;34mft_printf\t\033[1;33mCleaning obj\t\033[0;32m[OK]\033[0m"
+LOG_CLEAR		= \033[2K
+LOG_UP			= \033[A
+LOG_NOCOLOR		= \033[0m
+LOG_BOLD		= \033[1m
+LOG_UNDERLINE	= \033[4m
+LOG_BLINKING	= \033[5m
+LOG_BLACK		= \033[1;30m
+LOG_RED			= \033[1;31m
+LOG_GREEN		= \033[1;32m
+LOG_YELLOW		= \033[1;33m
+LOG_BLUE		= \033[1;34m
+LOG_VIOLET		= \033[1;35m
+LOG_CYAN		= \033[1;36m
+LOG_WHITE		= \033[1;37m
 
-fclean: clean
-	@rm -rf ./obj $(NAME)
-	@echo "\033[1;34mft_printf\t\033[1;33mCleaning lib\t\033[0;32m[OK]\033[0m"
+# Protect
 
-re: fclean all
+.PHONY:	all clean fclean re
 
-norme:
-	@norminette $(SRC) $(LIB) $(INC)
-	@echo "\033[1;34mft_printf\t\033[1;33mNorminette\t\033[0;32m[OK]\033[0m"
+# **************************************************************************** #
+
+# RULES
+
+# Main rules
+all				: 	$(NAME)
+
+re				: 	fclean all
+
+# Compilation rules
+
+$(NAME)			:	 $(OBJ) $(UTIOBJ) $(CONVOBJ)
+					@echo "-------------------------------------------------------------"
+					@echo "|                  Debut de la compilation                  |"
+					@echo "|                            42                             |"
+					@echo "|                         FT_PRINTF                         |"
+					@echo "|                       compilation :                       |"
+					@echo "|                                                           |"
+					@ar rc $(NAME) $(OBJ) $(UTIOBJ) $(CONVOBJ)
+					@ranlib $(NAME)
+					@echo "|                 make $(NAME)$(LOG_GREEN) ✓ $(LOG_NOCOLOR)                     |"
+					@echo "-------------------------------------------------------------"
+# Clean rules
+clean			:
+					@echo "-------------------------------------------------------------"
+					@rm -rf $(OBJ) $(UTIOBJ) $(CONVOBJ)
+					@echo "|                  Removes all$(LOG_GREEN) .o ✓ !$(LOG_NOCOLOR)                    |"
+					@echo "-------------------------------------------------------------"
+
+fclean			: 	clean
+					@rm -f $(NAME)
+
+# **************************************************************************** #
