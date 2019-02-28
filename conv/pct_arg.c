@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p_arg.c                                            :+:      :+:    :+:   */
+/*   pct_arg.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wahasni <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/24 17:49:50 by wahasni           #+#    #+#             */
-/*   Updated: 2019/02/25 08:18:39 by wahasni          ###   ########.fr       */
+/*   Created: 2019/02/23 15:45:06 by yabecret          #+#    #+#             */
+/*   Updated: 2019/02/27 17:02:44 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int		p_arg(t_printf *pf)
+int		pct_arg(t_printf *pf)
 {
-	printf("salut %c\n", pf->conv);
-	// Mettre 0x avant dans buf
+	plus_padding(pf, '%');
 	return (1);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parsing.c                                       :+:      :+:    :+:   */
+/*   parse_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wahasni <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/10 15:13:05 by wahasni           #+#    #+#             */
-/*   Updated: 2019/02/25 12:02:23 by wahasni          ###   ########.fr       */
+/*   Created: 2019/02/21 17:37:12 by yabecret          #+#    #+#             */
+/*   Updated: 2019/02/27 22:15:51 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	get_options(t_printf *pf)
 {
 	int res;
 
-	printf("pf.format option = %s\n", pf->format);
 	while ((res = find_char("-+0 #", *pf->format)) && pf->format++)
 		pf->flags |= res;
 	if (((pf->flags & F_ZERO) == F_ZERO) && ((pf->flags & F_MINUS) == F_MINUS))
@@ -27,7 +26,6 @@ void	get_options(t_printf *pf)
 
 void	get_min_length(t_printf *pf)
 {
-	printf("pf.format min_length = %s\n", pf->format);
 	if (*pf->format >= 49 && *pf->format <= 57)
 		pf->min_length = ft_atoi(pf->format);
 	if (*pf->format == '*')
@@ -38,11 +36,10 @@ void	get_min_length(t_printf *pf)
 
 void	get_precision(t_printf *pf)
 {
-	printf("pf.format precision = %s\n", pf->format);
 	if (*pf->format == '.')
 	{
 		pf->format++;
-		pf->precision = ft_atoi(pf->format);
+		pf->precision = ft_atoi(pf->format) ? ft_atoi(pf->format) : -1;
 		if (*pf->format == '*')
 			pf->precision = va_arg(pf->ap, int);
 		while (ft_isdigit(*pf->format) > 0)
@@ -52,7 +49,6 @@ void	get_precision(t_printf *pf)
 
 void	get_specifiers(t_printf *pf)
 {
-	printf("pf.format specifiers = %s\n", pf->format);
 	int res;
 
 	if ((res = find_char("hlLjz", *pf->format)))
@@ -60,7 +56,7 @@ void	get_specifiers(t_printf *pf)
 		res <<= 5;
 		pf->format++;
 		if (((res == 32) && (*pf->format == 'h')) ||
-				((res == 64) && (*pf->format == 'l')))
+			((res == 64) && (*pf->format == 'l')))
 		{
 			res <<= 5;
 			pf->format++;
@@ -78,9 +74,9 @@ int	parse_arg(t_printf *pf)
 	if (!get_conversion(pf))
 		return (0);
 	conv_to_fct(pf);
-	printf("pf.formatafter = %s\n", pf->format);
+	/*printf("pf.formatafter = %s\n", pf->format);
 	printf("flags1 = %d\n", pf->flags);
 	printf("min_length = %d\n", pf->min_length);
-	printf("precision = %d\n", pf->precision);
+	printf("precision = %d\n", pf->precision);*/
 	return (1);
 }

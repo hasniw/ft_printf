@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conversion.c                                    :+:      :+:    :+:   */
+/*   manage_conv.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wahasni <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/27 21:03:17 by wahasni           #+#    #+#             */
-/*   Updated: 2019/02/24 17:45:17 by wahasni          ###   ########.fr       */
+/*   Created: 2019/02/23 13:09:48 by yabecret          #+#    #+#             */
+/*   Updated: 2019/02/27 22:24:44 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 t_conv g_conv[] =
 {
-	{"diouxX", &int_arg},
-	{"DOU", &dou_arg},
+	{"diouxXb", &int_arg},
+	{"DOUB", &dou_arg},
 	{"cC", &c_arg},
 	{"sS", &s_arg},
 	{"p", &p_arg},
@@ -50,11 +50,10 @@ int		conv_to_fct(t_printf *pf)
 
 int		get_conversion(t_printf *pf)
 {
-	printf("pf.format conv = %s\n", pf->format);
 	if ((pf->conv = find_conv("sSpdDioOuUxXcCfbB%", *pf->format)) != 0)
 	{
 		pf->format++;
-		if (pf->conv == 'o' || pf->conv == '0')
+		if (pf->conv == 'o' || pf->conv == 'O')
 			pf->base |= B_OCT;
 		else if (pf->conv == 'x' || pf->conv == 'X')
 			pf->base |= B_HEX;
@@ -68,6 +67,7 @@ int		get_conversion(t_printf *pf)
 		ft_printf("invalid conversion specifier '%c'\n", *pf->format);
 		return (0);
 	}
+	if (pf->conv == 'X' || pf->conv == 'O')
+		pf->maj = 1;
 	return (1);
 }
-

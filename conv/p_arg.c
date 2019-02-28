@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dou_arg.c                                          :+:      :+:    :+:   */
+/*   p_arg.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wahasni <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/24 17:48:51 by wahasni           #+#    #+#             */
-/*   Updated: 2019/02/24 19:26:44 by wahasni          ###   ########.fr       */
+/*   Created: 2019/02/23 15:44:58 by yabecret          #+#    #+#             */
+/*   Updated: 2019/02/25 12:26:24 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int		dou_arg(t_printf *pf)
+int		p_arg(t_printf *pf)
 {
-		printf("salut %c\n", pf->conv);
-			return (1);
+	printf("salut %c\n", pf->conv);
+	return (1);
 }

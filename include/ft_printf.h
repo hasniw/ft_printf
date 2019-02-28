@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wahasni <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/24 13:29:21 by wahasni           #+#    #+#             */
-/*   Updated: 2019/02/24 19:46:11 by wahasni          ###   ########.fr       */
+/*   Created: 2018/11/23 11:50:32 by yabecret          #+#    #+#             */
+/*   Updated: 2019/02/28 00:17:22 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "../libft/libft.h"
 # include <stdio.h>
 
-# define BUFF_SIZE 128
+# define BUFF_SIZE 200
+
+# define ABS(Value) Value < 0 ? -Value : Value
 
 /* -------------------------------- FLAGS & SPEC ---------------------------- */
 
@@ -48,12 +49,13 @@
 typedef struct	s_printf
 {
 	int			flags;
-	int			len;
 	int			precision;
 	int			min_length;
+	int			neg;
 	int			base;
-	int			padding;
-	int			buffer_index;
+	int			maj;
+	int			index;
+	int			ret;
 	va_list 	ap;
 	char 		buff[BUFF_SIZE];
 	char		*format;
@@ -70,6 +72,19 @@ typedef struct	s_conv
 
 int				ft_printf(const char *format, ...);
 
+/* ----------------------------------- UTILS ------------------------------- */
+
+size_t			ft_strlen(const char *str);
+void			*ft_memset(void *s, int c, size_t n);
+void			*ft_memcpy(void *dest, const void *src, size_t n);
+void			ft_bzero(void *s, size_t n);
+void			ft_putstr_fd(char const *s, int fd);
+char			*ft_strcpy(char *dest, const char *src);
+intmax_t		ft_atoi(char *s);
+int				ft_isdigit(int c);
+int				find_char(char *str, char c);
+int				find_conv(char *str, char c);
+
 /* ---------------------------------- OPTIONS ------------------------------- */
 
 int				parse_arg(t_printf *pf);
@@ -78,6 +93,7 @@ int				parse_arg(t_printf *pf);
 
 int				get_conversion(t_printf *pf);
 int				conv_to_fct(t_printf *pf);
+int				d_conv(t_printf *pf, intmax_t nb, uintmax_t new);
 
 /* ---------------------------------- PT_FUNCT ------------------------------ */
 
@@ -88,5 +104,24 @@ int				s_arg(t_printf *pf);
 int				p_arg(t_printf *pf);
 int				pct_arg(t_printf *pf);
 
-#endif
+/* -------------------------------- HANDLE_BUFF ----------------------------- */
 
+void			reset_struct(t_printf *pf);
+void			reset(t_printf *pf);
+void			check_buff(t_printf *pf);
+int				end(t_printf *pf, int i);
+int				handle_buff(t_printf *pf, char* str, int diff, int n);
+
+
+/* ---------------------------------- PADDING ------------------------------- */
+
+void			padding(t_printf *pf, int prec, int len, uintmax_t nb);
+void			min_padding(t_printf *pf, char c, int len);
+void			plus_padding(t_printf *pf, char c);
+
+/* ---------------------------------- NUMBERS ------------------------------- */
+
+int				ft_nbrlen(uintmax_t nb, intmax_t base);
+char			*ft_lltoa_base(uintmax_t nb, t_printf *pf);
+
+#endif

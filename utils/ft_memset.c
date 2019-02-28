@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_arg.c                                            :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wahasni <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/24 13:52:01 by wahasni           #+#    #+#             */
-/*   Updated: 2019/02/25 12:01:44 by wahasni          ###   ########.fr       */
+/*   Created: 2018/11/12 16:07:26 by yabecret          #+#    #+#             */
+/*   Updated: 2019/02/25 12:26:45 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int		w_char(t_printf *pf)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	printf("salut w_char %d\n", pf->flags);
-	return (1);
-}
+	char *tmp;
 
-int		c_arg(t_printf *pf)
-{
-	if (((pf->flags & S_LONG) == S_LONG) || (pf->conv == 'C'))
-		w_char(pf);
-	else
-		pf->buff[pf->index++] = va_arg(pf->ap, int);
-	return (1);
+	tmp = s;
+	while (n--)
+		*tmp++ = c;
+	return (s);
 }
-
