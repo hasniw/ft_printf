@@ -6,7 +6,7 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 15:45:10 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/27 00:29:47 by ybecret          ###   ########.fr       */
+/*   Updated: 2019/02/28 12:09:20 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		s_conv(t_printf *pf)
 	str = va_arg(pf->ap, char*);
 	i = str ? ft_strlen(str) : 6;
 	if (pf->precision && pf->precision < i)
-		i = pf->precision;
+		i = (pf->precision == -1) ? 0 : pf->precision;
 	j = pf->min_length ? pf->min_length - i : 0;
 	if ((pf->flags & F_MINUS) == F_MINUS)
 	{

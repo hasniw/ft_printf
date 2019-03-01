@@ -6,7 +6,7 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 13:09:48 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/27 22:24:44 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/03/01 00:41:58 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,19 @@ int		get_conversion(t_printf *pf)
 	if ((pf->conv = find_conv("sSpdDioOuUxXcCfbB%", *pf->format)) != 0)
 	{
 		pf->format++;
-		if (pf->conv == 'o' || pf->conv == 'O')
+		if (pf->conv == 'o' || pf->conv == 'O') 
 			pf->base |= B_OCT;
-		else if (pf->conv == 'x' || pf->conv == 'X')
+		else if (pf->conv == 'x' || pf->conv == 'X' || pf->conv == 'p')
 			pf->base |= B_HEX;
 		else if (pf->conv == 'b' || pf->conv == 'B')
-			pf->base |= B_BIN;
+			(pf->base |= B_BIN); 
 		else
-			pf->base = B_DEC;
+			(pf->base = B_DEC);
 	}
 	else
 	{
 		ft_printf("invalid conversion specifier '%c'\n", *pf->format);
 		return (0);
 	}
-	if (pf->conv == 'X' || pf->conv == 'O')
-		pf->maj = 1;
 	return (1);
 }

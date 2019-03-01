@@ -6,7 +6,7 @@
 #    By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/13 19:43:10 by yabecret          #+#    #+#              #
-#    Updated: 2019/02/28 11:25:33 by yabecret         ###   ########.fr        #
+#    Updated: 2019/03/01 00:48:38 by wahasni          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME 	= 	libftprintf.a
 
 # Compilation
-CC		= 	@cc
+CC		= 	@cc -O3
 CFLAGS	= 	-Wall -Wextra -Werror
 
 SRCDIR = srcs/
@@ -41,11 +41,14 @@ UTIOBJ	= $(UTILS:.c=.o)
 
 CONV	=		$(CONVDIR)c_arg.c				\
 				$(CONVDIR)d_conv.c				\
+				$(CONVDIR)u_conv.c				\
+				$(CONVDIR)x_conv.c				\
 				$(CONVDIR)dou_arg.c				\
 				$(CONVDIR)int_arg.c				\
 				$(CONVDIR)p_arg.c				\
 				$(CONVDIR)pct_arg.c				\
 				$(CONVDIR)s_arg.c				\
+				$(CONVDIR)cast.c				\
 
 CONVOBJ	= $(CONV:.c=.o)
 

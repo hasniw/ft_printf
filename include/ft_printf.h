@@ -6,7 +6,7 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 11:50:32 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/28 13:47:36 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/03/01 01:16:04 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@
 # include <unistd.h>
 # include <stdio.h>
 
-# define BUFF_SIZE 200
+# define BUFF_SIZE 64
 
 # define ABS(Value) Value < 0 ? -Value : Value
+# define MAX(a,b) a > b ? a : b
+//# define egal(a,b) pf->conv == a || pf->conv == b
 
 /* -------------------------------- FLAGS & SPEC ---------------------------- */
 
@@ -53,7 +55,6 @@ typedef struct	s_printf
 	int			min_length;
 	int			neg;
 	int			base;
-	int			maj;
 	int			index;
 	int			ret;
 	va_list 	ap;
@@ -84,7 +85,7 @@ intmax_t		ft_atoi(char *s);
 int				ft_isdigit(int c);
 int				find_char(char *str, char c);
 int				find_conv(char *str, char c);
-size_t			ft_voidlen(void *ptr);
+char			*to_upper(char *str);
 
 /* ---------------------------------- OPTIONS ------------------------------- */
 
@@ -95,6 +96,13 @@ int				parse_arg(t_printf *pf);
 int				get_conversion(t_printf *pf);
 int				conv_to_fct(t_printf *pf);
 int				d_conv(t_printf *pf, intmax_t nb, uintmax_t new);
+int				u_conv(t_printf *pf, uintmax_t nb);
+int				x_conv(t_printf *pf, uintmax_t unb);
+
+/* ---------------------------------- CASTARG ------------------------------- */
+
+intmax_t		ft_castint(t_printf *pf);
+uintmax_t		ft_castuint(t_printf *pf);
 
 /* ---------------------------------- PT_FUNCT ------------------------------ */
 
@@ -116,13 +124,17 @@ int				handle_buff(t_printf *pf, char* str, int diff, int n);
 
 /* ---------------------------------- PADDING ------------------------------- */
 
+void			hash_padding(t_printf *pf);
 void			padding(t_printf *pf, int prec, int len, uintmax_t nb);
+void			padding_x(t_printf *pf, int prec, int len, uintmax_t nb);
 void			min_padding(t_printf *pf, char c, int len);
 void			plus_padding(t_printf *pf, char c);
+int				check_zero(t_printf *pf, int len);
+uintmax_t		check_neg(t_printf *pf, intmax_t nb, uintmax_t new);
 
 /* ---------------------------------- NUMBERS ------------------------------- */
 
 int				ft_nbrlen(uintmax_t nb, intmax_t base);
-char			*ft_lltoa_base(uintmax_t nb, t_printf *pf);
+char			*ft_lltoa_base(uintmax_t nb, intmax_t base);
 
 #endif

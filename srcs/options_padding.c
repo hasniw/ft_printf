@@ -6,11 +6,32 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 11:16:47 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/27 22:35:20 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/03/01 00:46:43 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+
+void	padding_x(t_printf *pf, int prec, int len, uintmax_t nb)
+{
+	((pf->flags & F_PLUS) == F_PLUS) ? plus_padding(pf, '+') : 0;
+	((pf->flags & F_SPACE) == F_SPACE) ? plus_padding(pf, ' ') : 0;
+	pf->neg ? plus_padding(pf, '-') : 0;
+	min_padding(pf, '0', prec);
+	hash_padding(pf);
+	handle_buff(pf, ft_lltoa_base(nb, pf->base), 0, len);
+}
+
+void	hash_padding(t_printf *pf)
+{
+	check_buff(pf);
+	pf->buff[pf->index++] = '0';
+	check_buff(pf);
+	if (pf->conv == 'x' || pf->conv == 'p')
+		pf->buff[pf->index++] = 'x';
+	else
+		pf->buff[pf->index++] = 'X';
+}
 
 void	padding(t_printf *pf, int prec, int len, uintmax_t nb)
 {
@@ -18,7 +39,7 @@ void	padding(t_printf *pf, int prec, int len, uintmax_t nb)
 	((pf->flags & F_SPACE) == F_SPACE) ? plus_padding(pf, ' ') : 0;
 	pf->neg ? plus_padding(pf, '-') : 0;
 	min_padding(pf, '0', prec);
-	handle_buff(pf, ft_lltoa_base(nb, pf), 0, len);
+	handle_buff(pf, ft_lltoa_base(nb, pf->base), 0, len);
 }
 
 void	min_padding(t_printf *pf, char c, int len)

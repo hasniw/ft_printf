@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_str_toupper.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 11:22:07 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/28 14:41:58 by yabecret         ###   ########.fr       */
+/*   Created: 2019/02/28 17:05:38 by yabecret          #+#    #+#             */
+/*   Updated: 2019/02/28 19:36:27 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-size_t	ft_strlen(const char *s)
+char	*to_upper(char *str)
 {
 	int i;
 
 	i = 0;
-	while (s[i])
+	while (str[i] != '\0')
+	{
+		if (str[i] >= 97 && str[i] <= 122)
+			str[i] = str[i] - 32;
 		i++;
-	return (i);
+	}
+	return (str);
 }

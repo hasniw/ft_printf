@@ -6,7 +6,7 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 12:34:13 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/27 22:24:41 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/02/27 18:19:25 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	reset_struct(t_printf *pf)
 	pf->neg = 0;
 	pf->base = 0;
 	pf->conv = 0;
-	pf->maj = 0;
 }
 
 int		end(t_printf *pf, int i)
