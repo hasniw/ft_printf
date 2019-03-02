@@ -6,7 +6,7 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 11:50:32 by yabecret          #+#    #+#             */
-/*   Updated: 2019/03/02 13:50:54 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/03/02 17:51:57 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int				ft_printf(const char *format, ...);
 /* ----------------------------------- UTILS ------------------------------- */
 
 size_t			ft_strlen(const char *str);
+size_t			ft_wstrlen(wchar_t* s);
+size_t			w_charlen(wint_t wc);
 void			*ft_memset(void *s, int c, size_t n);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
 void			ft_bzero(void *s, size_t n);
@@ -96,12 +98,12 @@ int				parse_arg(t_printf *pf);
 
 int				get_conversion(t_printf *pf);
 int				conv_to_fct(t_printf *pf);
+int				not_specifier(t_printf *pf);
 int				d_conv(t_printf *pf, intmax_t nb, uintmax_t new);
 int				u_conv(t_printf *pf, uintmax_t nb);
 int				x_conv(t_printf *pf, uintmax_t nb);
 int				o_conv(t_printf *pf, uintmax_t nb);
-
-
+int				w_char(t_printf *pf, wint_t wc);
 
 /* ---------------------------------- CASTARG ------------------------------- */
 
@@ -116,7 +118,6 @@ int				c_arg(t_printf *pf);
 int				s_arg(t_printf *pf);
 int				p_arg(t_printf *pf);
 int				pct_arg(t_printf *pf);
-int				not_specifier(t_printf *pf);
 
 /* -------------------------------- HANDLE_BUFF ----------------------------- */
 

@@ -6,7 +6,7 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 15:44:47 by yabecret          #+#    #+#             */
-/*   Updated: 2019/03/02 13:15:38 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/03/01 18:25:05 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int			int_arg(t_printf *pf)
 	unb = 0;
 	if (pf->conv == 'd' || pf->conv == 'i')
 		nb = ft_castint(pf);
-	else if (pf->conv == 'o' || pf->conv == 'u' || pf->conv == 'x' 
-			|| pf->conv == 'X')
+	else if (pf->conv == 'o' || pf->conv == 'u' || pf->conv == 'x' || pf->conv == 'X')
 		unb = ft_castuint(pf);
 	if (pf->conv == 'd' || pf->conv == 'i')
 		d_conv(pf, nb, new);

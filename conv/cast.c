@@ -6,7 +6,7 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 12:20:59 by yabecret          #+#    #+#             */
-/*   Updated: 2019/03/02 13:24:24 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/03/02 15:14:13 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ uintmax_t	ft_castuint(t_printf *pf)
 	else if ((pf->flags & S_LONG) || (pf->conv == 'U') || (pf->conv == 'O'))
 		return (va_arg(pf->ap, unsigned long));
 	else if (pf->flags & S_SHORT)
-		return (va_arg(pf->ap, unsigned int));
+		return ((unsigned short)va_arg(pf->ap, unsigned int));
 	else if (pf->flags & S_CHAR)
 		return ((unsigned char)va_arg(pf->ap, unsigned int));
 	return (va_arg(pf->ap, unsigned int));

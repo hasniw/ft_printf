@@ -6,13 +6,13 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 15:44:19 by yabecret          #+#    #+#             */
-/*   Updated: 2019/03/02 12:03:30 by yabecret         ###   ########.fr       */
+/*   Updated: 2019/03/02 18:27:42 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		w_charlen(wint_t wc)
+size_t	w_charlen(wint_t wc)
 {
 	if (wc <= 0x7F)
 		return (1);
@@ -97,7 +97,7 @@ int			c_conv(t_printf *pf)
 	}
 	else
 	{
-		min_padding(pf, ' ', min);
+		(pf->flags & F_ZERO) ? min_padding(pf, '0', min) : min_padding(pf, ' ', min);
 		char_padding(pf, c);
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 12:34:13 by yabecret          #+#    #+#             */
-/*   Updated: 2019/03/02 12:50:55 by yabecret         ###   ########.fr       */
+/*   Updated: 2019/03/02 16:48:56 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int		handle_buff(t_printf *pf, char *str, int i, int n)
 {
 	int len;
 
-//	len = ft_strlen(str) - i;
 	len = n - i;
 	if (pf->index + len >= BUFF_SIZE - 1)
 	{

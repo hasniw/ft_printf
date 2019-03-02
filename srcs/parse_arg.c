@@ -6,7 +6,7 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:37:12 by yabecret          #+#    #+#             */
-/*   Updated: 2019/03/02 16:44:39 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/03/02 21:25:50 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ void	get_min_length(t_printf *pf)
 	{
 		pf->format++;
 		pf->min_length = va_arg(pf->ap, int);
+		if (pf->min_length < 0)
+		{
+			pf->min_length = ABS(pf->min_length);
+			pf->flags |= F_MINUS;
+		}
 	}
 	while (ft_isdigit(*pf->format) > 0)
 		pf->format++;
@@ -43,7 +48,6 @@ void	get_precision(t_printf *pf)
 	{
 		pf->format++;
 		pf->precision = ft_atoi(pf->format) ? ft_atoi(pf->format) : -1;
-		pf->precision = pf->precision < 0 ? 0 : pf->precision;
 		if (*pf->format == '*')
 		{
 			pf->format++;
@@ -65,7 +69,7 @@ void	get_specifiers(t_printf *pf)
 		res <<= 5;
 		pf->format++;
 		if (((res == 32) && (*pf->format == 'h')) ||
-			((res == 64) && (*pf->format == 'l')))
+				((res == 64) && (*pf->format == 'l')))
 		{
 			res <<= 5;
 			pf->format++;
@@ -84,8 +88,8 @@ int	parse_arg(t_printf *pf)
 		return (0);
 	conv_to_fct(pf);
 	/*printf("pf.formatafter = %s\n", pf->format);
-	printf("flags1 = %d\n", pf->flags);
-	printf("min_length = %d\n", pf->min_length);
-	printf("precision = %d\n", pf->precision);*/
+	  printf("flags1 = %d\n", pf->flags);
+	  printf("min_length = %d\n", pf->min_length);
+	  printf("precision = %d\n", pf->precision);*/
 	return (1);
 }

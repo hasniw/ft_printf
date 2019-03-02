@@ -6,7 +6,7 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 13:09:48 by yabecret          #+#    #+#             */
-/*   Updated: 2019/03/02 13:58:20 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/03/02 18:57:50 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ int		conv_to_fct(t_printf *pf)
 	i = is_conv(pf);
 	if (i != -1)
 		g_conv[i].funct(pf);
-	else
-		not_specifier(pf);
 	return (1);
 }
 
@@ -64,10 +62,11 @@ int		get_conversion(t_printf *pf)
 		else
 			pf->base = B_DEC;
 	}
-//	else
-//	{
-//
-//		return (0);
-//	}
+	else
+	{
+		not_specifier(pf);
+		//ft_printf("invalid conversion specifier '%c'\n", *pf->format);
+		return (0);
+	}
 	return (1);
 }

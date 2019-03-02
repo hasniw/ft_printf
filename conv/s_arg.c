@@ -6,7 +6,7 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 15:45:10 by yabecret          #+#    #+#             */
-/*   Updated: 2019/03/02 16:37:32 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/03/02 18:29:34 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,22 @@
 
 int		w_str(t_printf *pf)
 {
-	printf("salut w_char* %d\n", pf->flags);
+	wchar_t *str;
+
+	str = va_arg(pf->ap, wchar_t*);
+	if (!str)
+		handle_buff(pf, "(null)", 0, 6);
+	else
+	{
+		while (*str)
+		{
+			check_buff(pf);
+			w_char(pf, *str);
+			str++;
+		}
+	}
 	return (1);
 }
-
 
 int		s_conv(t_printf *pf)
 {
@@ -37,7 +49,7 @@ int		s_conv(t_printf *pf)
 	}
 	else
 	{
-		min_padding(pf, ' ', min);
+		(pf->flags & F_ZERO) ? min_padding(pf, '0', min) : min_padding(pf, ' ', min);
 		str ? handle_buff(pf, str, 0, len) : handle_buff(pf, "(null)", 0, len);
 	}
 	return (1);

@@ -6,7 +6,7 @@
 #    By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/13 19:43:10 by yabecret          #+#    #+#              #
-#    Updated: 2019/03/02 14:08:29 by wahasni          ###   ########.fr        #
+#    Updated: 2019/03/02 17:53:30 by yabecret         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,8 +50,8 @@ CONV	=		$(CONVDIR)c_arg.c				\
 				$(CONVDIR)u_conv.c				\
 				$(CONVDIR)o_conv.c				\
 				$(CONVDIR)x_conv.c				\
-				$(CONVDIR)cast.c				\
 				$(CONVDIR)not_conv.c			\
+				$(CONVDIR)cast.c				\
 
 CONVOBJ	= $(CONV:.c=.o)
 
