@@ -6,11 +6,11 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 11:22:07 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/28 14:41:58 by yabecret         ###   ########.fr       */
+/*   Updated: 2019/03/01 18:26:37 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 size_t	ft_strlen(const char *s)
 {

@@ -6,11 +6,11 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 11:20:11 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/25 19:20:31 by yabecret         ###   ########.fr       */
+/*   Updated: 2019/03/01 18:26:33 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 char	*ft_strcpy(char *dest, const char *src)
 {

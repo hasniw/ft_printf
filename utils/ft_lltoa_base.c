@@ -6,11 +6,11 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 17:16:48 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/27 18:47:03 by yabecret         ###   ########.fr       */
+/*   Updated: 2019/03/01 18:26:12 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 int					ft_nbrlen(uintmax_t nb, intmax_t base)
 {

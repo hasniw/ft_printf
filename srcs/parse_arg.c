@@ -6,11 +6,11 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:37:12 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/27 12:10:32 by yabecret         ###   ########.fr       */
+/*   Updated: 2019/03/02 16:44:39 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 void	get_options(t_printf *pf)
 {
@@ -18,9 +18,9 @@ void	get_options(t_printf *pf)
 
 	while ((res = find_char("-+0 #", *pf->format)) && pf->format++)
 		pf->flags |= res;
-	if (((pf->flags & F_ZERO) == F_ZERO) && ((pf->flags & F_MINUS) == F_MINUS))
-		pf->flags &= ~F_MINUS;
-	if (((pf->flags & F_PLUS) == F_PLUS) && ((pf->flags & F_SPACE) == F_SPACE))
+	if ((pf->flags & F_ZERO) && (pf->flags & F_MINUS))
+		pf->flags &= ~F_ZERO;
+	if ((pf->flags & F_PLUS) && (pf->flags & F_SPACE))
 		pf->flags &= ~F_SPACE;
 }
 
@@ -29,7 +29,10 @@ void	get_min_length(t_printf *pf)
 	if (*pf->format >= 49 && *pf->format <= 57)
 		pf->min_length = ft_atoi(pf->format);
 	if (*pf->format == '*')
+	{
+		pf->format++;
 		pf->min_length = va_arg(pf->ap, int);
+	}
 	while (ft_isdigit(*pf->format) > 0)
 		pf->format++;
 }
@@ -40,8 +43,14 @@ void	get_precision(t_printf *pf)
 	{
 		pf->format++;
 		pf->precision = ft_atoi(pf->format) ? ft_atoi(pf->format) : -1;
+		pf->precision = pf->precision < 0 ? 0 : pf->precision;
 		if (*pf->format == '*')
+		{
+			pf->format++;
 			pf->precision = va_arg(pf->ap, int);
+			if (pf->precision < 0)
+				pf->precision = 0;
+		}
 		while (ft_isdigit(*pf->format) > 0)
 			pf->format++;
 	}

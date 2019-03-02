@@ -6,11 +6,11 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 11:56:38 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/28 10:46:10 by yabecret         ###   ########.fr       */
+/*   Updated: 2019/03/02 14:49:49 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_printf(const char *format, ...)
 {
@@ -25,8 +25,9 @@ int	ft_printf(const char *format, ...)
 		if (*pf.format == '%')
 		{
 			pf.format++;
-			if (!parse_arg(&pf))
-				return (end(&pf, 0));
+			parse_arg(&pf);
+//			if (!parse_arg(&pf))
+//				return (end(&pf, 1));
 			reset_struct(&pf);
 		}
 		else

@@ -6,11 +6,11 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 14:41:26 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/27 15:05:52 by yabecret         ###   ########.fr       */
+/*   Updated: 2019/03/01 18:25:59 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_isdigit(int c)
 {

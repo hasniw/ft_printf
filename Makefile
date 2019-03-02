@@ -6,7 +6,7 @@
 #    By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/13 19:43:10 by yabecret          #+#    #+#              #
-#    Updated: 2019/03/01 00:48:38 by wahasni          ###   ########.fr        #
+#    Updated: 2019/03/02 14:08:29 by wahasni          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME 	= 	libftprintf.a
 
 # Compilation
 CC		= 	@cc -O3
-CFLAGS	= 	-Wall -Wextra -Werror
+CFLAGS	= 	-Wall -Wextra -Werror -Iincludes
 
 SRCDIR = srcs/
 
@@ -35,20 +35,23 @@ UTILS	=		$(UTILSDIR)ft_atoi.c			\
 				$(UTILSDIR)ft_putstr_fd.c		\
 				$(UTILSDIR)ft_strcpy.c			\
 				$(UTILSDIR)ft_strlen.c			\
+				$(UTILSDIR)ft_str_toupper.c		\
 				$(UTILSDIR)options.c			\
 
 UTIOBJ	= $(UTILS:.c=.o)
 
 CONV	=		$(CONVDIR)c_arg.c				\
-				$(CONVDIR)d_conv.c				\
-				$(CONVDIR)u_conv.c				\
-				$(CONVDIR)x_conv.c				\
 				$(CONVDIR)dou_arg.c				\
 				$(CONVDIR)int_arg.c				\
 				$(CONVDIR)p_arg.c				\
 				$(CONVDIR)pct_arg.c				\
 				$(CONVDIR)s_arg.c				\
+				$(CONVDIR)d_conv.c				\
+				$(CONVDIR)u_conv.c				\
+				$(CONVDIR)o_conv.c				\
+				$(CONVDIR)x_conv.c				\
 				$(CONVDIR)cast.c				\
+				$(CONVDIR)not_conv.c			\
 
 CONVOBJ	= $(CONV:.c=.o)
 
@@ -56,6 +59,7 @@ SRCS 	=		$(SRCDIR)ft_printf.c			\
 				$(SRCDIR)handle_buff.c			\
 				$(SRCDIR)manage_conv.c			\
 				$(SRCDIR)options_padding.c		\
+				$(SRCDIR)options_check.c		\
 				$(SRCDIR)parse_arg.c			\
 
 OBJ	   = $(SRCS:.c=.o)
@@ -94,6 +98,8 @@ re				: 	fclean all
 
 # Compilation rules
 
+#
+#$(info $(OBJ) $(UTIOBJ) $(CONVOBJ))
 $(NAME)			:	 $(OBJ) $(UTIOBJ) $(CONVOBJ)
 					@echo "-------------------------------------------------------------"
 					@echo "|                  Debut de la compilation                  |"
@@ -103,13 +109,14 @@ $(NAME)			:	 $(OBJ) $(UTIOBJ) $(CONVOBJ)
 					@echo "|                                                           |"
 					@ar rc $(NAME) $(OBJ) $(UTIOBJ) $(CONVOBJ)
 					@ranlib $(NAME)
-					@echo "|                 make $(NAME)$(LOG_GREEN) ✓ $(LOG_NOCOLOR)                     |"
+					@echo "|                   make $(NAME)$(LOG_GREEN) ✓ $(LOG_NOCOLOR)                   |"
 					@echo "-------------------------------------------------------------"
 # Clean rules
+
 clean			:
 					@echo "-------------------------------------------------------------"
 					@rm -rf $(OBJ) $(UTIOBJ) $(CONVOBJ)
-					@echo "|                  Removes all$(LOG_GREEN) .o ✓ !$(LOG_NOCOLOR)                    |"
+					@echo "|                    Removes all .o$(LOG_GREEN) ✓ $(LOG_NOCOLOR) !                    |"
 					@echo "-------------------------------------------------------------"
 
 fclean			: 	clean

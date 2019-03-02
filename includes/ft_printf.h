@@ -6,7 +6,7 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 11:50:32 by yabecret          #+#    #+#             */
-/*   Updated: 2019/03/01 20:49:06 by yabecret         ###   ########.fr       */
+/*   Updated: 2019/03/02 13:50:54 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <wchar.h>
 
 # define BUFF_SIZE 64
 
@@ -115,6 +116,7 @@ int				c_arg(t_printf *pf);
 int				s_arg(t_printf *pf);
 int				p_arg(t_printf *pf);
 int				pct_arg(t_printf *pf);
+int				not_specifier(t_printf *pf);
 
 /* -------------------------------- HANDLE_BUFF ----------------------------- */
 
@@ -122,7 +124,7 @@ void			reset_struct(t_printf *pf);
 void			reset(t_printf *pf);
 void			check_buff(t_printf *pf);
 int				end(t_printf *pf, int i);
-int				handle_buff(t_printf *pf, char* str, int diff, int n);
+int				handle_buff(t_printf *pf, char* str, int i, int n);
 
 
 /* ---------------------------------- PADDING ------------------------------- */

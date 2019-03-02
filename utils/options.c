@@ -6,11 +6,11 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 11:40:31 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/25 12:25:46 by yabecret         ###   ########.fr       */
+/*   Updated: 2019/03/01 18:26:42 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 int		find_char(char *str, char c)
 {

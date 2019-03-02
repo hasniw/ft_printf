@@ -6,11 +6,11 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 15:44:39 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/28 12:36:35 by yabecret         ###   ########.fr       */
+/*   Updated: 2019/03/02 13:20:39 by wahasni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 int		dou_arg(t_printf *pf)
 {
@@ -28,8 +28,8 @@ int		dou_arg(t_printf *pf)
 	if (pf->conv == 'D')
 		d_conv(pf, nb, new);
 	if (pf->conv == 'O')
-		d_conv(pf, unb, new);
+		o_conv(pf, unb);
 	if (pf->conv == 'U')
-		d_conv(pf, unb, new);
+		u_conv(pf, unb);
 	return (1);
 }

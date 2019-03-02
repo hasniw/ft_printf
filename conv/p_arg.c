@@ -6,11 +6,11 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 15:44:58 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/28 14:45:36 by yabecret         ###   ########.fr       */
+/*   Updated: 2019/03/01 18:25:13 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 int		p_arg(t_printf *pf)
 {
@@ -25,7 +25,7 @@ int		p_arg(t_printf *pf)
 		hash_padding(pf);
 	else
 	{
-		if ((pf->flags & F_MINUS) == F_MINUS)
+		if (pf->flags & F_MINUS)
 		{
 			hash_padding(pf);
 			handle_buff(pf, ft_lltoa_base((uintmax_t)ptr, pf->base), 0, len);

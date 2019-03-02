@@ -6,11 +6,11 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 12:34:13 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/27 18:19:25 by yabecret         ###   ########.fr       */
+/*   Updated: 2019/03/02 12:50:55 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 void	reset_struct(t_printf *pf)
 {
@@ -38,31 +38,31 @@ void	reset(t_printf *pf)
 {
 	ft_putstr_fd(pf->buff, 1);
 	ft_bzero(pf->buff, BUFF_SIZE);
-	pf->ret += BUFF_SIZE;
+	pf->ret += (BUFF_SIZE - 1);
 	pf->index = 0;
 }
 
 void	check_buff(t_printf *pf)
 {
-	if (pf->index == BUFF_SIZE)
+	if (pf->index == BUFF_SIZE - 1)
 		reset(pf);
 }
 
-int		handle_buff(t_printf *pf, char* str, int diff, int n)
+int		handle_buff(t_printf *pf, char *str, int i, int n)
 {
 	int len;
 
-//	len = ft_strlen(str) - diff;
-	len = n - diff;
-	if (pf->index + len >= BUFF_SIZE)
+//	len = ft_strlen(str) - i;
+	len = n - i;
+	if (pf->index + len >= BUFF_SIZE - 1)
 	{
-		ft_memcpy(&pf->buff[pf->index], &str[diff], (BUFF_SIZE - pf->index));
-		diff += BUFF_SIZE - pf->index;
+		ft_memcpy(&pf->buff[pf->index], &str[i], ((BUFF_SIZE - 1) - pf->index));
+		i += (BUFF_SIZE - 1) - pf->index;
 		reset(pf);
-		handle_buff(pf, str, diff, n);
+		handle_buff(pf, str, i, n);
 	}
 	else
 		while (len--)
-			pf->buff[pf->index++] = str[diff++];
+			pf->buff[pf->index++] = str[i++];
 	return (1);
 }

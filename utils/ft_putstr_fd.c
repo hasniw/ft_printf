@@ -6,11 +6,11 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 14:39:34 by yabecret          #+#    #+#             */
-/*   Updated: 2019/02/25 13:28:47 by yabecret         ###   ########.fr       */
+/*   Updated: 2019/03/01 18:26:24 by yabecret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 void	ft_putstr_fd(char const *s, int fd)
 {
