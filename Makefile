@@ -6,7 +6,7 @@
 #    By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/13 19:43:10 by yabecret          #+#    #+#              #
-#    Updated: 2019/03/02 17:53:30 by yabecret         ###   ########.fr        #
+#    Updated: 2019/03/03 18:52:50 by ybecret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ UTILS	=		$(UTILSDIR)ft_atoi.c			\
 				$(UTILSDIR)ft_putstr_fd.c		\
 				$(UTILSDIR)ft_strcpy.c			\
 				$(UTILSDIR)ft_strlen.c			\
+				$(UTILSDIR)ft_strnequ.c			\
 				$(UTILSDIR)ft_str_toupper.c		\
 				$(UTILSDIR)options.c			\
 
@@ -51,6 +52,7 @@ CONV	=		$(CONVDIR)c_arg.c				\
 				$(CONVDIR)o_conv.c				\
 				$(CONVDIR)x_conv.c				\
 				$(CONVDIR)not_conv.c			\
+				$(CONVDIR)man_arg.c				\
 				$(CONVDIR)cast.c				\
 
 CONVOBJ	= $(CONV:.c=.o)
@@ -58,6 +60,7 @@ CONVOBJ	= $(CONV:.c=.o)
 SRCS 	=		$(SRCDIR)ft_printf.c			\
 				$(SRCDIR)handle_buff.c			\
 				$(SRCDIR)manage_conv.c			\
+				$(SRCDIR)manage_colors.c		\
 				$(SRCDIR)options_padding.c		\
 				$(SRCDIR)options_check.c		\
 				$(SRCDIR)parse_arg.c			\

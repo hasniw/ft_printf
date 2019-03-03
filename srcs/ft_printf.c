@@ -6,7 +6,7 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 11:56:38 by yabecret          #+#    #+#             */
-/*   Updated: 2019/03/02 12:41:17 by yabecret         ###   ########.fr       */
+/*   Updated: 2019/03/03 16:50:21 by ybecret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ int	ft_printf(const char *format, ...)
 	while (*pf.format)
 	{
 		check_buff(&pf);
+		if (*pf.format == '{')
+			if (color_to_fct(&pf))
+				pf.format++;
 		if (*pf.format == '%')
 		{
 			pf.format++;
@@ -31,7 +34,9 @@ int	ft_printf(const char *format, ...)
 			reset_struct(&pf);
 		}
 		else
+		{
 			pf.buff[pf.index++] = *pf.format++;
+		}
 	}
 	return (end(&pf, 1));
 }

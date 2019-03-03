@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wahasni <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ybecret <ybecret@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/10 12:44:41 by wahasni           #+#    #+#             */
-/*   Updated: 2018/11/14 14:13:41 by wahasni          ###   ########.fr       */
+/*   Created: 2016/12/11 13:56:21 by ybecret           #+#    #+#             */
+/*   Updated: 2019/03/03 15:10:40 by ybecret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	while (n && *s2 && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+		n--;
+	}
+	return (n ? *(unsigned char*)s1 - *(unsigned char*)s2 : 0);
+}
 
 int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	int i;
-	int size;
-
-	i = 0;
-	size = (size_t)n;
-	if (s1 == 0 || s2 == 0)
-		return (1);
-	while ((s1[i] || s2[i]) && (i < size))
-	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
-	}
-	return (1);
+	if (!s1 || !s2)
+		return (0);
+	return (ft_strncmp(s1, s2, n) != 0 ? 0 : 1);
 }

@@ -6,7 +6,7 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 11:50:32 by yabecret          #+#    #+#             */
-/*   Updated: 2019/03/02 17:51:57 by yabecret         ###   ########.fr       */
+/*   Updated: 2019/03/03 18:52:20 by ybecret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,23 @@
 # define B_OCT (1 << 3)
 # define B_HEX (1 << 4)
 
+/* ----------------------------------- COLORS ------------------------------- */
+
+# define C_CLEAR		(\033[2K)
+# define C_UP			(\033[A)
+# define C_NOCOLOR		(\033[0m)
+# define C_BOLD			(\033[1m)
+# define C_UNDERLINE	(\033[4m)
+# define C_BLINKING		(\033[5m)
+# define C_BLACK		(\033[1;30m)
+# define C_RED			(\033[1;31m)
+# define C_GREEN		(\033[1;32m)
+# define C_YELLOW		(\033[1;33m)
+# define C_BLUE			(\033[1;34m)
+# define C_VIOLET		(\033[1;35m)
+# define C_CYAN			(\033[1;36m)
+# define C_WHITE		(\033[1;37m)
+
 /* ----------------------------------- STRUCT ------------------------------- */
 
 typedef struct	s_printf
@@ -72,7 +89,17 @@ typedef struct	s_conv
 	t_f_conv	funct;
 }				t_conv;
 
+typedef  int(*t_f_color)(t_printf*, int i);
+
+typedef struct	s_color
+{
+	char 		*color;
+	t_f_color	funct;
+}				t_color;
+
 int				ft_printf(const char *format, ...);
+
+int				color_to_fct(t_printf *pf);
 
 /* ----------------------------------- UTILS ------------------------------- */
 
@@ -84,6 +111,7 @@ void			*ft_memcpy(void *dest, const void *src, size_t n);
 void			ft_bzero(void *s, size_t n);
 void			ft_putstr_fd(char const *s, int fd);
 char			*ft_strcpy(char *dest, const char *src);
+int				ft_strnequ(char const *s1, char const *s2, size_t n);
 intmax_t		ft_atoi(char *s);
 int				ft_isdigit(int c);
 int				find_char(char *str, char c);
@@ -118,6 +146,7 @@ int				c_arg(t_printf *pf);
 int				s_arg(t_printf *pf);
 int				p_arg(t_printf *pf);
 int				pct_arg(t_printf *pf);
+int				man_arg(t_printf *pf);
 
 /* -------------------------------- HANDLE_BUFF ----------------------------- */
 

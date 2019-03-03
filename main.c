@@ -6,7 +6,7 @@
 /*   By: yabecret <yabecret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 13:49:43 by yabecret          #+#    #+#             */
-/*   Updated: 2019/03/02 21:53:54 by wahasni          ###   ########.fr       */
+/*   Updated: 2019/03/03 20:24:05 by ybecret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,17 +236,45 @@ int main(int ac, char **av)
 //		printf("{%05p}", 0);
 //		printf("%.5p", 0);
 //		printf("%.0p, %.p", 0, 0);
-		printf("real :{%3*d}\n", 0, 0);
-		ft_printf("mine :{%3*d}\n", 0, 0);
-		printf("real :{%*3d}\n", 0, 0);
-		ft_printf("mine :{%*3d}\n", 0, 0);
-		printf("real :{%*3d}\n", 5, 0);
-		ft_printf("mine :{%*3d}\n", 5, 0);
-		printf("real :{%3*p}\n", 10, 0);
-		ft_printf("mine :{%3*p}\n", 10, 0);
-		printf("real :{%.*s}\n", 0, "42");
-		ft_printf("mine :{%.*s}\n", 0, "42");
-		printf("real :{%.0s}\n", "42");
-		ft_printf("mine :{%.0s}\n", "42");
+
+/* ----------------------------------- *_TEST ------------------------------- */
+
+	/*ft_printf("mine %%*10d       :%*10d\n", nb1, 42); //invalid
+	printf("real %%*10d       :%*10d\n", nb1, 42); //invalid
+	ft_printf("mine %%.10*d      :%.10*d\n", nb1, 42); //invalid
+	printf("real %%.10*d      :%.10*d\n", nb1, 42); //invalid
+	ft_printf("mine %%10*d      :%10*d\n", nb1, 42); //invalid
+	printf("real %%10*d      :%10*d\n", nb1, 42); //invalid*/
+
+/*	ft_printf("mine %%*d        :%*d\n", nb1, 42);
+	printf("real %%*d        :%*d\n", nb1, 42);
+	ft_printf("mine %%0*d        :%0*d\n", nb1, 42);
+	printf("real %%0*d        :%0*d\n", nb1, 42);
+	ft_printf("mine %%*.10d        :%*.10d\n", nb1, 42);
+	printf("real %%*.10d        :%*.10d\n", nb1, 42);
+	ft_printf("mine %%*.d      :%*.d\n", nb1, 42);
+	printf("real %%*.d      :%*.d\n", nb1, 42);
+	ft_printf("mine %%*.*d      :%*.*d\n", nb1, -5, 42);
+	printf("real %%*.*d      :%*.*d\n", nb1, -5, 42);
+	ft_printf("mine %%0*.*d      :%0*.*d\n", nb1, -5, 42);
+	printf("real %%0*.*d      :%0*.*d\n", nb1, -5, 42);
+	ft_printf("mine %%0*.*d      :%0*.*d\n", nb1, 5, 42);
+	printf("real %%0*.*d      :%0*.*d\n", nb1, 5, 42);
+
+//	printf("{%3*d}\n", 0, 0); //error with flags1
+	printf("real :{%.*s}\n", nb1, "42");
+	ft_printf("mine :{%.*s}\n", nb1, "42");
+
+	//printf("real :{%3*p}", 10, 0); //invalid
+	//ft_printf("mine :{%3*p}", 10, 0); //invalid
+
+	printf("real :%.5p\n", 0);
+	ft_printf("mine :%.5p\n", 0);
+
+	printf("real :%2.9p\n", 1234);
+	ft_printf("mine :%2.9p\n", 1234);*/
+
+//	printf("salut \033[42mca {red}va ?\n");
+	ft_printf("salut %M\n");
 	return (0);
 }
